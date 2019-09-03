@@ -5,7 +5,8 @@ const pokemonReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
   switch(action.type) {
     case (RECEIVE_ALL_POKEMON):
-      return newState.entities.pokemon;
+      newState = action.pokemon;
+      return newState;
     default:
       return newState;
   }

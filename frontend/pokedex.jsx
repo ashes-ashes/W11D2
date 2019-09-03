@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 
 //---testing---//
-import { fetchAllPokemon } from './util/api_util';
-import { receiveAllPokemon } from './actions/pokemon_actions';
+import APIUtil from './util/api_util';
+import { receiveAllPokemon, requestAllPokemon } from './actions/pokemon_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,10 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(<h1>react</h1>, root);
 
-});
+  //---testing---//
+  window.receiveAllPokemon = receiveAllPokemon;
+  window.fetchAllPokemon = APIUtil.fetchAllPokemon;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  window.requestAllPokemon = requestAllPokemon;
 
-//---testing---//
-window.receiveAllPokemon = receiveAllPokemon;
-window.fetchAllPokemon = fetchAllPokemon;
-window.getState = store.getState;
-window.dispatch = store.dispatch;
+});
